@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="et">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Kasutaja Avaleht > Eesti Lauatennise võistluste kalenderplaan</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- jQuery and Popper.js -->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <!--<script src="js/jquery-3.2.1.min.js"></script>-->
+  <script src="js/popper.min.js"></script>
+
+  <!-- Bootstrap CSS and JS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- Font Awesome CSS -->
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+    crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="css/all.min.css">
+  <script src="js/all.min.js"></script>
+
+  <!-- Datatables CSS and JS -->
+  <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+  <script src="js/jquery.dataTables.min.js"></script>
+  <script src="js/dataTables.bootstrap4.min.js"></script>
+  <script src="js/datatables-date-de.js"></script>
+
+  <!-- Local CSS and JS -->
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+  <script src="js/main.js"></script>
+
+</head>
+
+<body>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <a href="index.html" class="text-dark btn">
+        <h1 class="display-4">Eesti Lauatennise võistluste kalenderplaan</h1>
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#"></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample10" aria-controls="navbarsExample10"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-md-center mr-2" id="navbarsExample10">
+        <div>
+          <ul class="navbar-nav">
+            <li class="nav-item active mx-2">
+              <a class="nav-link" href="KasutajaIndex.html">
+                <i class="fas fa-home"></i>&nbsp;
+                <strong>AVALEHT</strong>
+              </a>
+            </li>
+            <li class="nav-item dropdown mx-2">
+              <a class="nav-link dropdown-toggle" href="KasutajaMinuKalender.html" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-calendar-alt"></i>&nbsp;
+                <strong>MINU KALENDER</strong>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="KasutajaMinuKalender.html">Kuva Minu Kalender</a>
+                <a class="dropdown-item" href="KasutajaMinuKalenderPrint.html" target="_blank">Prindi
+                  Minu Kalender</a>
+              </div>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="index.html">
+                <i class="fas fa-sign-out-alt"></i>
+                <strong>LOGI VÄLJA</strong>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- LogIn Modal -->
+      <div class="modal fade" id="logInModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="card bg-light">
+              <article class="card-body mx-auto" style="max-width: 400px;">
+                <h4 class="card-title mt-3 text-center">Logi sisse</h4>
+                <br />
+                <form>
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-user"></i>
+                      </span>
+                    </div>
+                    <input id="username" name="" class="form-control" placeholder="Kasutajanimi" type="text">
+                  </div> <!-- form-group// -->
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-lock"></i>
+                      </span>
+                    </div>
+                    <input class="form-control" placeholder="Parool" type="password">
+                  </div> <!-- form-group// -->
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Sisene
+                    </button>
+                  </div> <!-- form-group// -->
+                  <p class="text-center">Pole veel kasutaja? <a href="#registerModal" data-toggle="modal">Loo
+                      uus
+                      kasutaja</a> </p>
+                </form>
+              </article>
+            </div> <!-- card.// -->
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Sulge</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Register Modal -->
+      <div class="modal fade" id="registerModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="card bg-light">
+              <article class="card-body mx-auto" style="max-width: 400px;">
+                <h4 class="card-title mt-3 text-center">Loo kasutajakonto</h4>
+                <br />
+                <form>
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-user"></i>
+                      </span>
+                    </div>
+                    <input id="username" name="" class="form-control" placeholder="Kasutajanimi" type="text">
+                  </div> <!-- form-group// -->
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-lock"></i>
+                      </span>
+                    </div>
+                    <input class="form-control" placeholder="Loo parool" type="password">
+                  </div> <!-- form-group// -->
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Loo konto
+                    </button>
+                  </div> <!-- form-group// -->
+                  <p class="text-center">Konto on juba olemas? <a href="#logInModal" data-toggle="modal">Logi
+                      sisse</a> </p>
+                </form>
+              </article>
+            </div> <!-- card.// -->
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Sulge</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </nav>
+
+    <br />
+
+    <!-- SEARCH -->
+    <div class="row">
+      <div class="col-sm-12 offset-sm-0">
+        <div class="input-group input-group-lg">
+          <span class="input-group-prepend">
+            <div class="input-group-text bg-transparent border-right-0"><i class="fa fa-search"></i></div>
+          </span>
+          <!-- <input class="form-control py-2 border-left-0 border" type="text" id="myInput" data-table="order-table"
+                      onfocus="this.value=''" placeholder="Otsi võistluste infot ..."> -->
+          <input class="form-control py-2 border-left-0 border" type="search" id="myInput" data-table="order-table"
+            placeholder="Otsi võistluste infot kuupäeva, nime või asukoha järgi ...">
+          <span class="input-group-append">
+            <button class="btn btn-outline-secondary border-left-0 border" type="button">
+              Otsi
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <!-- TABEL -->
+    <div class="table-responsive-lg">
+      <table id="competitions" class="table table-bordered table-hover table-striped table-responsive-stack">
+        <thead class="thead-dark">
+          <tr>
+            <th></th>
+            <th>Kuupäev</th>
+            <th>Võistluse seeria</th>
+            <th>Võistluse nimetus</th>
+            <th>Võistluse asukoht</th>
+          </tr>
+        </thead>
+
+        <tbody id="myTable">
+          <tr>
+            <td class="text-center">
+              <a href="KasutajaMinuKalender.1.html" class="starnocolor">
+                <span class="fa fa-star starnocolor" data-toggle="tooltip" title="Lisa Minu Kalendrisse"></span>
+              </a>
+            </td>
+            <td>07.10.2018</td>
+            <td>Raplamaa seeriavõistlus</td>
+            <td>Raplamaa seeriavõistluse 1. etapp Kaiu auhindadele</td>
+            <td>Alu Spordihoone</td>
+          </tr>
+          <tr>
+            <td class="text-center"><span class="fa fa-star starnocolor" data-toggle="tooltip" title="Lisa Minu Kalendrisse"></span></td>
+            <td>21.10.2018</td>
+            <td>Raplamaa Meistrivõistlused</td>
+            <td>SVK MV lauatennises</td>
+            <td>Valtu Spordimaja</td>
+          </tr>
+          <tr>
+            <td class="text-center"><span class="fa fa-star starcolor" data-toggle="tooltip" title="Eemalda Minu Kalendrist"></span></td>
+            <td>21.10.2018</td>
+            <td>Raplamaa seeriavõistlus</td>
+            <td>Raplamaa seeriavõistluse 2. etapp Märjamaa SK auhindadele</td>
+            <td>Märjamaa Spordihoone</td>
+          </tr>
+          <tr>
+            <td class="text-center"><span class="fa fa-star starnocolor" data-toggle="tooltip" title="Lisa Minu Kalendrisse"></span></td>
+            <td>10.11.2018</td>
+            <td>Raplamaa Meistrivõistlused</td>
+            <td>Rapla Maakonna võistkondlikud Meistrivõistlused</td>
+            <td>Valtu Spordimaja</td>
+          </tr>
+          <tr>
+            <td class="text-center"><span class="fa fa-star starnocolor" data-toggle="tooltip" title="Lisa Minu Kalendrisse"></span></td>
+            <td>24.11.2018</td>
+            <td>Raplamaa Meistrivõistlused</td>
+            <td>Kohila lahtised Meistrivõistlused</td>
+            <td>Kohila Spordikompleks</td>
+          </tr>
+          <tr>
+            <td class="text-center"><span class="fa fa-star starcolor" data-toggle="tooltip" title="Eemalda Minu Kalendrist"></span></td>
+            <td>16.12.2018</td>
+            <td>Raplamaa seeriavõistlus</td>
+            <td>Raplamaa seeriavõistluse 3. etapp Alu SK auhindadele</td>
+            <td>Alu Spordihoone</td>
+          </tr>
+          <tr>
+            <td class="text-center"><span class="fa fa-star starnocolor" data-toggle="tooltip" title="Lisa Minu Kalendrisse"></span></td>
+            <td>22.12.2018</td>
+            <td>Raplamaa Karikavõistlus</td>
+            <td>Rapla Maakonna individuaal karikavõistlused</td>
+            <td>Valtu Spordimaja</td>
+          </tr>
+          <tr>
+            <td class="text-center"><span class="fa fa-star starcolor" data-toggle="tooltip" title="Eemalda Minu Kalendrist"></span></td>
+            <td>19.01.2019</td>
+            <td>Raplamaa seeriavõistlus</td>
+            <td>Raplamaa seeriavõistluse 4. etapp Rapla auhindadele</td>
+            <td>Valtu Spordimaja</td>
+          </tr>
+          <tr>
+            <td class="text-center"><span class="fa fa-star starcolor" data-toggle="tooltip" title="Eemalda Minu Kalendrist"></span></td>
+            <td>09.02.2019</td>
+            <td>Raplamaa seeriavõistlus</td>
+            <td>Raplamaa seeriavõistluse 5. etapp Kohila auhindadele</td>
+            <td>Kohila Spordikompleks</td>
+          </tr>
+          <tr>
+            <td class="text-center"><span class="fa fa-star starnocolor" data-toggle="tooltip" title="Lisa Minu Kalendrisse"></span></td>
+            <td>09.03.2019</td>
+            <td>Raplamaa Meistrivõistlused</td>
+            <td>Rapla Maakonna Meistrivõistlused</td>
+            <td>Valtu Spordimaja</td>
+          </tr>
+          <tr>
+            <td class="text-center"><span class="fa fa-star starcolor" data-toggle="tooltip" title="Eemalda Minu Kalendrist"></span></td>
+            <td>16.03.2019</td>
+            <td>Raplamaa seeriavõistlus</td>
+            <td>Raplamaa seeriavõistluse 6. etapp Järvakandi auhindadele</td>
+            <td>Järvakandi koolimaja</td>
+          </tr>
+          <tr>
+            <td class="text-center"><span class="fa fa-star starcolor starnocolor" data-toggle="tooltip" title="Eemalda Minu Kalendrist"></span></td>
+            <td>07.04.2019</td>
+            <td>Raplamaa seeriavõistlus</td>
+            <td>Raplamaa seeriavõistluse 7. etapp Valtu auhindadele</td>
+            <td>Valtu Spordimaja</td>
+          </tr>
+          <tr>
+            <td class="text-center"><span class="fa fa-star starnocolor" data-toggle="tooltip" title="Lisa Minu Kalendrisse"></span></td>
+            <td>27.04.2019</td>
+            <td>Raplamaa Meistrivõistlused</td>
+            <td>Ennu Soodla XXIX mälestusvõistlused</td>
+            <td>Alu Spordihoone</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <br />
+
+  <!-- FOOTER -->
+  <div class="container">
+    <footer class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container justify-content-md-center">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="kontakt.html">Kontakt</a>
+          </li>
+          <li class="nav-item">
+            <a href="Privaatsuspoliitika.html" class="nav-link">Privaatsuspoliitika</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+</body>
+
+</html>

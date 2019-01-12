@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="et">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Privaatsuspoliitika > Eesti Lauatennise võistluste kalenderplaan</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- jQuery and Popper.js -->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <!--<script src="js/jquery-3.2.1.min.js"></script>-->
+  <script src="js/popper.min.js"></script>
+
+  <!-- Bootstrap CSS and JS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- Font Awesome CSS -->
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+    crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="css/all.min.css">
+  <script src="js/all.min.js"></script>
+
+  <!-- Datatables CSS and JS -->
+  <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+  <script src="js/jquery.dataTables.min.js"></script>
+  <script src="js/dataTables.bootstrap4.min.js"></script>
+  <script src="js/datatables-date-de.js"></script>
+
+  <!-- Local CSS and JS -->
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+  <script src="js/main.js"></script>
+
+</head>
+
+<body>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <a href="index.html" class="text-dark btn">
+        <h1 class="display-4">Eesti Lauatennise võistluste kalenderplaan</h1>
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#"></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample10" aria-controls="navbarsExample10"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-md-center mr-2" id="navbarsExample10">
+        <div>
+          <ul class="navbar-nav">
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="index.html">
+                <i class="fas fa-home"></i>&nbsp;
+                <strong>AVALEHT</strong>
+              </a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="MinuKalender.html">
+                <i class="fas fa-calendar-alt"></i>&nbsp;
+                <strong>MINU KALENDER</strong>
+              </a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" data-toggle="modal" href="#logInModal">
+                <i class="fas fa-sign-in-alt"></i>&nbsp;
+                <strong>LOGI SISSE</strong>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <!-- LogIn Modal -->
+    <div class="modal fade" id="logInModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="card bg-light">
+            <article class="card-body mx-auto" style="max-width: 400px;">
+              <h4 class="card-title mt-3 text-center">Logi sisse</h4>
+              <br />
+              <form onSubmit="return checkAnswer();">
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                  </div>
+                  <input id="username" name="" class="form-control" placeholder="Kasutajanimi" type="text">
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                  </div>
+                  <input class="form-control" placeholder="Parool" type="password">
+                </div> <!-- form-group// -->
+                <div class="form-group mb-5">
+                  <button type="submit" class="btn btn-primary btn-block">Sisene</button>
+                </div> <!-- form-group// -->
+              </form>
+            </article>
+          </div> <!-- card.// -->
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sulge</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="card bg-light">
+            <article class="card-body mx-auto" style="max-width: 400px;">
+              <h4 class="card-title mt-3 text-center">Loo kasutajakonto</h4>
+              <br />
+              <form>
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                  </div>
+                  <input id="username" name="" class="form-control" placeholder="Kasutajanimi" type="text">
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                  </div>
+                  <input class="form-control" placeholder="Loo parool" type="password">
+                </div> <!-- form-group// -->
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-block"> Loo konto
+                  </button>
+                </div> <!-- form-group// -->
+                <p class="text-center">Konto on juba olemas? <a href="#logInModal" data-toggle="modal">Logi
+                    sisse</a> </p>
+              </form>
+            </article>
+          </div> <!-- card.// -->
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sulge</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mb-2 mt-5">
+      <div class="pricing card-deck flex-column flex-md-row mb-3">
+
+        <div class="card card-pricing text-center px-3 mb-4">
+          <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-secondary text-white shadow-sm">Privaatsuspoliitika</span>
+          <br />
+          <div class="card-body text-left pt-0">
+
+            <div id="lipsum">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sapien leo, auctor ut
+                nisl
+                congue, porttitor
+                dictum nisi. Aliquam eget velit tortor. Nam malesuada nibh arcu, eget pellentesque
+                lectus
+                interdum at. Mauris
+                aliquet leo mauris, eu varius felis molestie id. Phasellus porta mollis diam, eget
+                dignissim odio tincidunt at.
+                Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                Vivamus eleifend, justo
+                id placerat mollis, purus leo iaculis diam, et ultricies quam lorem tincidunt elit.
+                Integer
+                turpis dolor,
+                elementum sed porttitor vitae, finibus feugiat elit. Integer tempor ligula nec sapien
+                viverra, in fringilla
+                quam imperdiet. Pellentesque massa nulla, consequat at enim a, eleifend porttitor
+                sapien.
+                Suspendisse nec lacus
+                non diam dictum venenatis. Donec felis lectus, consequat vitae eros sit amet,
+                sollicitudin
+                vestibulum ex.
+                Phasellus quis rutrum sem. Nullam nunc elit, ultrices in dolor et, bibendum tristique
+                diam.
+                Nam eu facilisis
+                turpis, non imperdiet risus. Donec tempor nec justo nec iaculis.
+              </p>
+              <p>
+                Proin ut accumsan diam. Aenean sit amet volutpat ex. Praesent posuere lorem vitae
+                tempus
+                auctor. In quis sem
+                non lacus scelerisque consectetur a in nibh. Nulla augue neque, viverra nec efficitur
+                a,
+                finibus et ex.
+                Suspendisse hendrerit ex felis, id venenatis dui vehicula sed. Quisque gravida metus
+                sed
+                gravida sagittis.
+                Integer orci arcu, posuere quis leo vitae, mollis mollis neque. Curabitur enim odio,
+                imperdiet sit amet laoreet
+                vel, pulvinar non arcu. In hac habitasse platea dictumst. Integer gravida diam ut
+                convallis
+                congue. Curabitur
+                ut ipsum nec neque pretium varius non a ex.
+              </p>
+              <p>
+                Ut aliquam faucibus velit, at tincidunt ex consequat vel. Mauris sagittis leo risus,
+                vitae
+                tempus nisi accumsan
+                id. Cras in metus fringilla, fringilla sem non, dapibus ante. Vestibulum commodo eget
+                enim
+                sed tempor. Nulla
+                nec pulvinar odio. Vivamus non nisi ullamcorper, gravida quam convallis, mollis arcu.
+                Integer fringilla sem et
+                purus aliquet consequat. Vivamus a luctus ipsum. Fusce pulvinar, lorem at vestibulum
+                fermentum, sapien urna
+                cursus nulla, sed ullamcorper risus turpis ac risus. Aliquam id diam ut felis maximus
+                dignissim ac nec mi.
+                Praesent maximus id lorem in cursus. Aliquam lacus diam, finibus eu lobortis ut,
+                efficitur
+                in dui. Mauris
+                pulvinar neque eu augue efficitur, venenatis mattis arcu pharetra. Quisque in faucibus
+                ipsum. Proin fermentum
+                justo eu rhoncus dignissim.
+              </p>
+              <p>
+                In in facilisis magna, eu consectetur lacus. Aliquam in nisl ante. Praesent tristique
+                eros
+                quis augue tempor,
+                ac interdum ex porta. Nam congue nunc dui, eget suscipit elit cursus vitae. Praesent
+                nunc
+                lectus, accumsan sit
+                amet luctus sed, bibendum nec urna. Sed posuere ut urna vitae blandit. Quisque vehicula
+                lacinia rutrum.
+                Vestibulum nec fermentum eros, non posuere mauris.
+              </p>
+              <p>
+                Vestibulum aliquam condimentum porttitor. Praesent convallis eleifend odio, et eleifend
+                eros volutpat sit amet.
+                Integer sit amet maximus elit, eget mattis sem. Maecenas viverra dapibus arcu, ac
+                venenatis
+                elit auctor ut.
+                Donec vitae ornare orci. Vestibulum ante ipsum primis in faucibus orci luctus et
+                ultrices
+                posuere cubilia
+                Curae; Nam euismod scelerisque nulla, et placerat felis feugiat ac. Class aptent taciti
+                sociosqu ad litora
+                torquent per conubia nostra, per inceptos himenaeos.
+              </p>
+              <p>
+                Duis fermentum quam ipsum, eget iaculis felis elementum a. Pellentesque accumsan
+                consequat
+                urna sagittis
+                volutpat. Quisque imperdiet sem enim, ut posuere mi venenatis at. Aenean a justo et
+                nisi
+                porttitor fringilla.
+                Phasellus a lacus rhoncus augue sagittis ultricies quis ac nibh. Quisque at bibendum
+                nunc.
+                Proin gravida
+                laoreet lobortis. Pellentesque habitant morbi tristique senectus et netus et malesuada
+                fames ac turpis egestas.
+                Curabitur sit amet pretium libero. Nunc imperdiet enim bibendum quam ullamcorper,
+                commodo
+                aliquet eros semper.
+                Integer euismod lobortis mattis. In hac habitasse platea dictumst. Suspendisse finibus
+                pulvinar urna at
+                fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+              <p>
+                Donec sed augue vitae est sollicitudin efficitur. Morbi tincidunt viverra massa in
+                posuere.
+                Proin mattis ipsum
+                convallis est bibendum tincidunt. Aliquam lacinia gravida felis, non pretium lacus
+                ultrices
+                ac. Curabitur
+                convallis, mauris eu maximus efficitur, velit justo dapibus diam, nec ultrices lorem
+                mauris
+                ac urna. Proin
+                ultrices lacinia turpis ut dignissim. Pellentesque congue felis nisl, ac imperdiet
+                purus
+                tincidunt in. Nunc
+                eleifend fermentum quam mattis sodales.
+              </p>
+              <p>
+                Cras egestas ligula euismod ex blandit accumsan. Suspendisse at dictum leo, non
+                convallis
+                metus. Proin nibh
+                dolor, accumsan in nisi a, maximus tristique nisl. Vestibulum vestibulum sapien quis
+                condimentum eleifend.
+                Integer quis convallis neque. Pellentesque eget nulla massa. Nam magna orci, tristique
+                venenatis sapien ac,
+                auctor efficitur mi. Nulla feugiat leo libero, finibus malesuada mi semper sed. Integer
+                tincidunt dapibus elit
+                sit amet imperdiet. Donec rutrum ultricies nibh, eget varius mauris fringilla sed.
+              </p>
+              <p>
+                In vel neque felis. Sed nec dignissim sem. Mauris sed maximus dolor. Aliquam eu ipsum
+                ultricies, ornare velit
+                nec, rhoncus quam. Sed dignissim hendrerit tellus, vitae fringilla diam tincidunt et.
+                Donec
+                facilisis nisi eu
+                dui ultricies lacinia. Sed eu lobortis turpis. Cras convallis vulputate leo, vitae
+                egestas
+                odio sodales quis.
+                Phasellus lacinia ac nulla ultricies porttitor. Curabitur ullamcorper nisl ut leo
+                viverra,
+                sed eleifend odio
+                sollicitudin. Aenean ullamcorper rutrum volutpat. Suspendisse pellentesque augue vel
+                sem
+                accumsan euismod.
+              </p>
+              <p>
+                In diam neque, imperdiet a ipsum sed, tempor egestas tortor. Donec eu ipsum accumsan,
+                consequat ex ut, blandit
+                orci. Vestibulum ac sapien dui. Sed porta elit eget mauris pellentesque, id hendrerit
+                eros
+                rutrum. Cras nec
+                cursus turpis. Sed mattis lorem eu nisi imperdiet posuere. Aenean sodales laoreet leo
+                at
+                mattis. Morbi ac
+                mauris ac lacus dictum molestie ut vel neque. Nullam cursus tincidunt sollicitudin.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container justify-content-md-center">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="kontakt.html">Kontakt</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Privaatsuspoliitika</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+</body>
+
+</html>
